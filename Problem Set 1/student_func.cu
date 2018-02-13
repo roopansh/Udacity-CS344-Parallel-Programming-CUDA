@@ -53,8 +53,8 @@ void rgba_to_greyscale(const uchar4* const rgbaImage, unsigned char* const greyI
 	int index = -1;
 	if(x < numCols && y < numRows){
 		index = numCols*y + x;
+		greyImage[index] = .299f * rgbaImage[index].x + .587f * rgbaImage[index].y + .114f * rgbaImage[index].z;
 	}
-	greyImage[index] = .299f * rgbaImage[index].x + .587f * rgbaImage[index].y + .114f * rgbaImage[index].z;
 }
 
 void your_rgba_to_greyscale(const uchar4 * const h_rgbaImage, uchar4 * const d_rgbaImage, unsigned char* const d_greyImage, size_t numRows, size_t numCols)
