@@ -1,4 +1,4 @@
-## Converting Colored Image to Black & White
+## Applying Gaussian Blur to an Image
 
 #### Compile
 
@@ -6,7 +6,7 @@
 
 #### Run
 
-	$ ./HW1 input_file [output_filename] [reference_filename] [perPixelError] [globalError]
+	$ ./HW2 input_file [output_filename] [reference_filename] [perPixelError] [globalError]
 
 ###### NOTE
 

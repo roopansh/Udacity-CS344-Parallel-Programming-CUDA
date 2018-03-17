@@ -1,4 +1,4 @@
-## Converting Colored Image to Black & White
+## High Dynamic Range (HDR) Image Application
 
 #### Compile
 
@@ -6,7 +6,7 @@
 
 #### Run
 
-	$ ./HW1 input_file [output_filename] [reference_filename] [perPixelError] [globalError]
+	$ ./HW3 input_file [output_filename] [reference_filename] [perPixelError] [globalError]
 
 ###### NOTE
 
