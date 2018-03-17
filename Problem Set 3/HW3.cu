@@ -59,7 +59,7 @@ __global__ void rgb_to_xyY(
 }
 
 /* Copied from Mike's IPython notebook *
-   Modified just by having threads read the 
+   Modified just by having threads read the
    normalization constant directly from device memory
    instead of copying it back                          */
 
@@ -178,7 +178,7 @@ void preProcess(float** d_luminance, unsigned int** d_cdf,
 
   //convert from RGB space to chrominance/luminance space xyY
   const dim3 blockSize(32, 16, 1);
-  const dim3 gridSize( (numCols__ + blockSize.x - 1) / blockSize.x, 
+  const dim3 gridSize( (numCols__ + blockSize.x - 1) / blockSize.x,
                        (numRows__ + blockSize.y - 1) / blockSize.y, 1);
   rgb_to_xyY<<<gridSize, blockSize>>>(d_red, d_green, d_blue,
                                       d_x__, d_y__,   d_logY__,
@@ -204,7 +204,7 @@ void preProcess(float** d_luminance, unsigned int** d_cdf,
   delete[] blue;
 }
 
-void postProcess(const std::string& output_file, 
+void postProcess(const std::string& output_file,
                  size_t numRows, size_t numCols,
                  float min_log_Y, float max_log_Y) {
   const int numPixels = numRows__ * numCols__;
@@ -217,10 +217,7 @@ void postProcess(const std::string& output_file,
 
   //first normalize the cdf to a maximum value of 1
   //this is how we compress the range of the luminance channel
-  normalize_cdf<<< (numBins + numThreads - 1) / numThreads,
-                    numThreads>>>(d_cdf__,
-                                  d_cdf_normalized,
-                                  numBins);
+  normalize_cdf<<< (numBins + numThreads - 1) / numThreads, numThreads>>>(d_cdf__, d_cdf_normalized, numBins);
 
   cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
 

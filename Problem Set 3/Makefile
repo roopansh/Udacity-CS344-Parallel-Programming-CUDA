@@ -26,7 +26,7 @@ CUDA_INCLUDEPATH=/usr/local/cuda-5.0/include
 #CUDA_INCLUDEPATH=/usr/local/cuda/include
 #CUDA_LIBPATH=/usr/local/cuda/lib
 
-NVCC_OPTS=-O3 -arch=compute_50 -Xcompiler -Wall -Xcompiler -Wextra -m64 -D_FORCE_INLINES
+NVCC_OPTS=-O3 -arch=sm_50 -Xcompiler -Wall -Xcompiler -Wextra -m64 -D_FORCE_INLINES
 
 GCC_OPTS=-O3 -Wall -Wextra -m64
 
@@ -52,5 +52,5 @@ student_func.o: student_func.cu utils.h
 	$(NVCC) -c student_func.cu $(NVCC_OPTS)
 
 clean:
-	rm -f *.o hw
+	rm -f *.o HW3
 	find . -type f -name '*.exr' | grep -v memorial | xargs rm -f
